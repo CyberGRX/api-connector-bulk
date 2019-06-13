@@ -21,3 +21,13 @@ release: clean build
 	shasum -c api-connector-bulk-${VERSION}.linux.sha
 	shasum -c api-connector-bulk-${VERSION}.darwin.sha
 	shasum -c api-connector-bulk-${VERSION}.exe.sha
+
+docker:
+	@echo Building docker container for ${VERSION}, this expects a release in GitHub!
+
+	docker build --build-arg VERSION=${VERSION} --tag=cybergrx/api-connector-bulk:${VERSION} -f Dockerfile .
+	docker tag cybergrx/api-connector-bulk:${VERSION} cybergrx/api-connector-bulk:latest
+
+	docker push cybergrx/api-connector-bulk:${VERSION}
+	docker push cybergrx/api-connector-bulk:latest
+	
