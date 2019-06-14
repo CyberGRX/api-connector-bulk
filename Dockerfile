@@ -23,7 +23,7 @@ RUN apk update && apk add --no-cache curl ca-certificates tzdata && \
 FROM scratch
 
 ENV GIN_MODE="release"
-ENV HOST="127.0.0.1"
+ENV HOST=""
 ENV PORT="8080"
 
 WORKDIR /workingdir

@@ -29,7 +29,7 @@ func init() {
 
 	hostname = strings.TrimRight(hostname, "/")
 
-	if os.Getenv("GIN_MODE") == "release" {
+	if strings.TrimSpace(os.Getenv("GIN_MODE")) == "release" {
 		cyberGrxAPI = "https://api.cybergrx.com"
 	} else if strings.HasPrefix(hostname, "http://") {
 		cyberGrxAPI = hostname

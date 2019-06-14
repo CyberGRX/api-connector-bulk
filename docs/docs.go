@@ -5,7 +5,9 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
+	"strings"
 )
 
 func TransformApiDocumentation(resp *http.Response) error {
@@ -63,13 +65,18 @@ func TransformApiDocumentation(resp *http.Response) error {
 		"200": cleanResponse,
 	}
 
+	schemes := schema["schemes"]
+	if strings.TrimSpace(os.Getenv("GIN_MODE")) != "release" {
+		schemes = []string{"https", "http"}
+	}
+
 	updatedSchema := map[string]interface{}{
 		"basePath": "/",
 		"definitions": map[string]interface{}{
 			"ThirdParty": thirdParty,
 		},
 		"info":    schema["info"],
-		"schemes": []string{"http"}, //schema["schemes"],
+		"schemes": schemes,
 		"swagger": schema["swagger"],
 		"paths": map[string]interface{}{
 			"/v1/third-parties": map[string]interface{}{
