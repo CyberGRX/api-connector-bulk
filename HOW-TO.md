@@ -23,12 +23,12 @@ The workflow is pretty simple:
  ![copy-secret]
 
 
-[enter-user-management]: /docs/enter-user-management.png "Click top right icon and enter `Manage my company user accounts`"
+[enter-user-management]: /how-to/enter-user-management.png "Click top right icon and enter `Manage my company user accounts`"
 
-[add-a-token]: /docs/add-a-token.png "Click the tab to `Manage Access Tokens` and Add a new token"
+[add-a-token]: /how-to/add-a-token.png "Click the tab to `Manage Access Tokens` and Add a new token"
 
-[confirm-new-token]: /docs/confirm-new-token.png "Accept the promt creating a token"
+[confirm-new-token]: /how-to/confirm-new-token.png "Accept the promt creating a token"
 
-[view-token]: /docs/make-sure-you-view.png "Before leaving view the token secret"
+[view-token]: /how-to/make-sure-you-view.png "Before leaving view the token secret"
 
-[copy-secret]: /docs/copy-secret.png "Show the secret and copy it, this is the only time that this token will be available over the API!"
+[copy-secret]: /how-to/copy-secret.png "Show the secret and copy it, this is the only time that this token will be available over the API!"
