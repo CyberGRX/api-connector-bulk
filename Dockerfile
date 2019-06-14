@@ -25,6 +25,7 @@ FROM scratch
 ENV GIN_MODE="release"
 ENV HOST=""
 ENV PORT="8080"
+ENV BULK_API_VERSION="${VERSION}"
 
 WORKDIR /workingdir
 

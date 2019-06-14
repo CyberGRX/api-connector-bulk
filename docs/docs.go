@@ -70,12 +70,22 @@ func TransformApiDocumentation(resp *http.Response) error {
 		schemes = []string{"https", "http"}
 	}
 
+	info := schema["info"].(map[string]interface{})
+	info["title"] = "CyberGRX Bulk API"
+	info["description"] = "Swagger API definitions for exporting data from the CyberGRX Exchange without pagination. This documentation details current services exposed and provides insight into all data that can potentially be integrated into other systems."
+
+	version := os.Getenv("BULK_API_VERSION")
+	if strings.TrimSpace(version) == "" {
+		version = "1.0.1"
+	}
+	info["version"] = version
+
 	updatedSchema := map[string]interface{}{
 		"basePath": "/",
 		"definitions": map[string]interface{}{
 			"ThirdParty": thirdParty,
 		},
-		"info":    schema["info"],
+		"info":    info,
 		"schemes": schemes,
 		"swagger": schema["swagger"],
 		"paths": map[string]interface{}{
