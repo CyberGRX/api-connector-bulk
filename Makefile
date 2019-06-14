@@ -8,8 +8,7 @@ build:
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o api-connector-bulk-${VERSION}.exe -a -installsuffix cgo
 
 clean:
-	rm -f api-connector-bulk
-	rm -f api-connector-bulk-${VERSION}*
+	rm -f api-connector-bulk*
 
 release: clean build
 	@echo Releasing $(VERSION)
