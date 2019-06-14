@@ -9,6 +9,8 @@ import (
 	"log"
 	"net/http"
 	"net/http/httputil"
+	"os"
+	"strings"
 	"time"
 
 	"github.com/CyberGRX/api-connector-bulk/assets"
@@ -17,8 +19,33 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var cyberGrxAPI string
+
+func init() {
+	hostname := strings.TrimSpace(os.Getenv("CYBERGRX_API"))
+	if hostname == "" {
+		hostname = "api.cybergrx.com"
+	}
+
+	hostname = strings.TrimRight(hostname, "/")
+
+	if os.Getenv("GIN_MODE") == "release" {
+		cyberGrxAPI = "https://api.cybergrx.com"
+	} else if strings.HasPrefix(hostname, "http://") {
+		cyberGrxAPI = hostname
+	} else {
+		cyberGrxAPI = fmt.Sprintf("https://%s", strings.TrimLeft(hostname, "https://"))
+	}
+
+	log.Printf("[INFO] Configuring bulk query support for %s\n", cyberGrxAPI)
+}
+
+func getURL(uri string) string {
+	return fmt.Sprintf("%s%s", cyberGrxAPI, uri)
+}
+
 func get(uri, authorization string) (response map[string]interface{}, err error) {
-	url := fmt.Sprintf("%s%s", "http://api-version-1.staging.k8s-staging.grx.io", uri)
+	url := getURL(uri)
 	log.Printf("[INFO] Fetching %s\n", url)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
@@ -149,7 +176,7 @@ func thirdParties(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	r := gin.New()
+	r := gin.Default()
 
 	// Serve embedded assets, any matched paths will take precidence over mapped routes
 	r.Use(static.Serve("", assets.NewEmbeddedFileSystem()))
@@ -169,5 +196,11 @@ func main() {
 		thirdParties(c.Writer, c.Request)
 	})
 
-	r.Run(":8080")
+	host := strings.TrimSpace(os.Getenv("HOST"))
+	port := strings.TrimSpace(os.Getenv("PORT"))
+	if port == "" {
+		port = "8080"
+	}
+
+	r.Run(fmt.Sprintf("%s:%s", host, port))
 }
