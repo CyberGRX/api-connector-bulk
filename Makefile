@@ -1,10 +1,10 @@
 VERSION := $(shell cat VERSION)
 
 build:
-	@echo Building $(VERSION) for darwin, linux-64, and windows-64
+	@echo Building $(VERSION) for darwin, linux, and windows-64
 	
 	CGO_ENABLED=0 GOOS=darwin go build -o api-connector-bulk-${VERSION}.darwin -a -installsuffix cgo
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o api-connector-bulk-${VERSION}.linux -a -installsuffix cgo
+	CGO_ENABLED=0 GOOS=linux go build -o api-connector-bulk-${VERSION}.linux -a -installsuffix cgo
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o api-connector-bulk-${VERSION}.exe -a -installsuffix cgo
 
 clean:
