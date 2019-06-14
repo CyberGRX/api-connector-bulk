@@ -25,11 +25,11 @@ To get started right away:
 # Development Workflows
 - Make sure you have golang >= 1.12
 - Make modifications to the source
- - `go build`
- - `CYBERGRX_API=${INTERNAL_API} ./api-connector-bulk`
- - Once you are satisfied update VERSION, commit and push your code
+  - `go build`
+  - `CYBERGRX_API=${INTERNAL_API} ./api-connector-bulk`
+  - Once you are satisfied update VERSION, commit and push your code
 - Make a release
- - `make release`
- - Tag a release in GitHub attaching the versioned binaries (VERSION must match)
+  - `make release`
+  - Tag a release in GitHub attaching the versioned binaries (VERSION must match)
 - Push docker image
- - `make docker`
+  - `make docker`
