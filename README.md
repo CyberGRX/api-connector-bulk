@@ -9,18 +9,18 @@ This is a general purpose reverse proxy for the [CyberGRX API](https://api.cyber
  
 **Key features:**
 - Self documenting using the formal API swagger specification (navigate to https://HOST:PORT/)
-- Pull an entire ecosystem with a sinle API request.
-- Retrieve all information for each third party, this includes the latest authorized residual_risk (gaps/findings) and control scores.
-- The CyberGRX API is versioned and will maintain backwards compatibility, that will cascade to this service's implementation as well.
+- Pull an entire ecosystem with a single API request.
+- Retrieve all information for each third party, this includes:
+ - For authorized reports the latest authorized residual_risk (gaps/findings).
+ - For authorized reports, the latest control scores.
+- The CyberGRX API is versioned and will maintain backwards compatibility
 
 ## Usage
-```
-Execute the webservice using GIN_MODE=release ./api-connector-bulk
-```
-
-## Documentation
-
 If you are taking a look at configuring the CyberGRX Bulk Connector, please take a look at the [Install Guide (How To)](./HOW-TO.md).
+
+To get started right away:
+ - Run `HOST=127.0.0.1 PORT=8080 GIN_MODE=release ./api-connector-bulk`
+ - Visit http://127.0.0.1:8080/
 
 # Development Workflows
 - Make sure you have golang >= 1.12
