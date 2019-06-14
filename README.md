@@ -11,8 +11,8 @@ This is a general purpose reverse proxy for the [CyberGRX API](https://api.cyber
 - Self documenting using the formal API swagger specification (navigate to https://HOST:PORT/)
 - Pull an entire ecosystem with a single API request.
 - Retrieve all information for each third party, this includes:
- - For authorized reports the latest authorized residual_risk (gaps/findings).
- - For authorized reports, the latest control scores.
+  - For authorized reports the latest authorized residual_risk (gaps/findings).
+  - For authorized reports, the latest control scores.
 - The CyberGRX API is versioned and will maintain backwards compatibility
 
 ## Usage
