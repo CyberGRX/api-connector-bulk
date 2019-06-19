@@ -25,6 +25,10 @@ def sheet_writer(wb, name, columns, mapping):
             nonlocal row
             transformed = glom(blob, mapping)
             for idx, injector in enumerate(columns):
+                value = transformed[injector[1]]
+                if value is None:
+                    continue
+                    
                 sheet.cell(row=row, column=1+idx).value = transformed[injector[1]]
             row += 1
 
