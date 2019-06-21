@@ -6,4 +6,12 @@ The first step is to configure a virtual environment for the application depende
 - Python 3: `pip3 install virtualenv && python -m venv env`
 - `source env/bin/activate`
 - `pip install -r requirements.txt`
-- `AUTH_TOKEN="${AUTH_TOKEN}" python export.py`
+
+At this point you are all setup to run the example, but before you do, create a file that holds your API token. 
+- `vi .auth-token` add the following line to this file and save it `export CYBERGRX_API_TOKEN="API-V1 TOKEN FROM UI"`
+
+Once that is done you can source that file into your environment and run the export
+- `source .auth-token`
+- `python export.py`
+
+Once you are done **remove** the `.auth-token` file!!!
