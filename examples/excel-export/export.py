@@ -97,7 +97,7 @@ SCORE_MAPPING = {
 }
 
 def retireve_ecosystem(): 
-    api = os.environ.get('CYBERGRX_BULK_API', "http://localhost:8080").rstrip("/")
+    api = os.environ.get('CYBERGRX_BULK_API', "http://127.0.0.1:8080").rstrip("/")
     token = os.environ.get('CYBERGRX_API_TOKEN', None)
     if not token:
         raise Exception("The environment variable CYBERGRX_API_TOKEN must be set")
