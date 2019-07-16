@@ -6,4 +6,5 @@ The way to run the bulk connector in this mode of operation is to set the follow
 If you have the bulk connector running on a production system (don't forget to wrap the application with HTTPS).  You can run an example application and set the environmental parameter `CYBERGRX_BULK_API=https://hostname-of-bulk-connector`.
 
 # A set of sample integrations with the bulk connector
-- [Bulk export to an excel file](./excel-export/README.md)
+- [Bulk export to an Excel file](./excel-export/README.md)
+- [Bulk export to a XML file](./xml-export/README.md)
