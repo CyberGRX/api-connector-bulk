@@ -121,7 +121,7 @@ def retireve_ecosystem():
     findings_writer.finalizer()
     scores_writer.finalizer()
     tags_writer.finalizer()
-    wb.save("ecosytstem.xlsx")
+    wb.save("ecosystem.xlsx")
 
 
 if __name__ == '__main__':
